@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { myContext } from "../Context";
 
 const Homepage = () => {
-  return (
-   <h1>Welcome to my Homepage</h1>
+  const context:any = useContext(myContext)
+  return(
+    <div>
+      {context ? (
+        <h1>Welcome back {context.firstName} !!</h1>
+      ) : (
+        <h1>Welcome to my website</h1>
+      )}
+    </div>
   )
 }
 
