@@ -5,6 +5,7 @@ import Homepage from './pages/Homepage'
 import LoginPage from './pages/LoginPage'
 import Navbar from './pages/Navbar'
 import { myContext } from "./Context";
+import  ProfilePage  from './pages/ProfilePage'
 
 function App() {
   const userObject = useContext(myContext);
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path ="/profile" element={<ProfilePage/>} />
         </Routes>
       </BrowserRouter>
     </>
