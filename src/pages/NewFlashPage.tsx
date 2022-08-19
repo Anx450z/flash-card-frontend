@@ -22,6 +22,7 @@ const NewFlashPage = () => {
       question: data.get('question'),
       answer: data.get('answer'),
       tag: data.get('tag'),
+      flashColor: data.get('flashColor')
     }
     console.log(actualData)
     if (actualData.question && actualData.answer && context) {
@@ -51,7 +52,7 @@ const NewFlashPage = () => {
 
   return (
     <>
-      <div className="flex mx-auto justify-center item-center">
+      <div className="flex mx-auto justify-center item-center transition-all duration-500 ease-in-out">
         <NewFlashCard onHandleSubmit={handleSubmit} error={error}/>
       </div>
     </>

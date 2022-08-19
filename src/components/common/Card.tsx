@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export const Card = (props: any) => {
-  const style = `m-4 min-w-[32rem] bg-white shadow-xl border
+  const [color, setColor] = useState("bg-[white]")
+
+  useEffect(() => {
+    setColor(props.color)
+  },[props.color])
+  
+  const style = `m-4 min-w-[32rem] ${color} shadow-xl border
                 border-gray-200 rounded-xl max-w-sm p-4 sm:p-6 lg:p-8`
   return <div className={style}>{props.children}</div>
 }
