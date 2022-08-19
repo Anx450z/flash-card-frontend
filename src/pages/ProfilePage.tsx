@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/common/Button'
+import ContextMenu from '../components/ContextMenu'
 import FlashCard from '../components/FlashCard'
 import { myContext } from '../Context'
 import FlashTypes from '../types/FlashType'
@@ -40,10 +41,28 @@ const ProfilePage = () => {
 
     // console.log('flashes', flashes)
   }
+  const [show, setShow] = useState(false)
+  const [position, setPosition] = useState({
+    x:"0",
+    y:"0"
+  })
 
   useEffect(() => {
     getFlashes()
-  }, [])
+    const handleClick = () => setShow(false)
+    window.addEventListener('click', handleClick)
+
+    return () => window.removeEventListener('click', handleClick)
+  }, [show])
+
+
+  const handleContextMenu = (event:any) => {
+    event.preventDefault();
+    setShow(true)
+    setPosition({x:`left-[100px]`, y:`top-[100px]`})
+
+    console.log("right clicked",event.pageX,event.pageY)
+  }
 
   return (
     <>
@@ -51,10 +70,11 @@ const ProfilePage = () => {
         <Button text="Add Flash" onClick={handleNewFlash} />
       </div>
       <h1>Profile {context.firstName}</h1>
+      {show && <ContextMenu position={position}/>}
 
       <ul className="grid grid-cols-1 gap-4 md:grid-cols-3 mx-2 my-2 mb-[80px]">
         {flashes.map(flash => (
-          <li key={flash.id}>
+          <li key={flash.id} onContextMenu={handleContextMenu}>
             <FlashCard
               question={flash.question}
               answer={flash.answer}
