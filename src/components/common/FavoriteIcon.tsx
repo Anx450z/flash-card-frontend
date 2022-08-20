@@ -4,11 +4,11 @@ const FavoriteIcon = (props :any) => {
   return (
     <div>
       <svg
-        className="mr-4 inline-block h-6 w-6 text-white"
+        className="mr-4 inline-block h-6 w-6 text-white cursor-pointer"
         viewBox="0 0 450 550"
         fill={props.favorite ? "red" : "none" }
-        stroke={props.favorite ? "none" : "black" }
-        strokeWidth="40"
+        stroke={props.favorite ? "none" : "gray" }
+        strokeWidth="25"
         >
         
         <path

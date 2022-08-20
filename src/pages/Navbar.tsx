@@ -1,10 +1,12 @@
 import axios, { AxiosResponse } from 'axios'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import ClearButton from '../components/common/ClearButton'
 import { myContext } from '../Context'
 
 const Navbar = () => {
   const context: any = useContext(myContext)
+  const navigate = useNavigate()
 
   let links = [
     {
@@ -12,8 +14,12 @@ const Navbar = () => {
       url: '/',
     },
     {
-      title: 'Login',
-      url: '/login',
+      title: 'About',
+      url: '/',
+    },
+    {
+      title: 'Contact',
+      url: '/',
     },
   ]
   if (context) {
@@ -37,6 +43,8 @@ const Navbar = () => {
       })
   }
 
+  const handleLogin = () => navigate('/login')
+
   return (
     <>
       <div className=" fixed top-0 left-0 w-full shadow-sm">
@@ -47,6 +55,28 @@ const Navbar = () => {
             className="absolute left-0 z-[-1] w-full pb-7
               pl-9 transition-all duration-500 ease-in-out md:static md:z-auto md:flex
               md:w-auto md:items-center md:pb-0 md:pl-0">
+            {context ? (
+              <>
+                <img
+                  src={context.photo}
+                  alt="profile"
+                  className="w-[35px] rounded-full border-solid"
+                />
+                <ClearButton
+                  onClick={handleLogout}
+                  tailwind="absolute mx-3 right-0 border-2 px-4 py-2">
+                  {' '}
+                  Logout
+                </ClearButton>
+              </>
+            ) : (
+              <ClearButton
+                onClick={handleLogin}
+                tailwind="relative mx-3 right-0 border-2 px-4 py-2 md:absolute">
+                {' '}
+                Login
+              </ClearButton>
+            )}
             {links.map(link => (
               <li key={link.title} className="my-2 text-xl md:my-0 md:ml-8">
                 <a
@@ -57,15 +87,10 @@ const Navbar = () => {
                 </a>
               </li>
             ))}
-            {context ? (
-              <>
-                <ClearButton onClick={handleLogout} tailwind="absolute mx-3 right-0 border-2 px-4 py-2" > Logout</ClearButton>
-              </>
-            ) : null}
           </ul>
         </div>
       </div>
-      <div className="top-0 left-0 w-full mt-[90px]"></div>
+      <div className="top-0 left-0 mt-[65px] w-full"></div>
     </>
   )
 }
