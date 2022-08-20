@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/common/Button'
+import ClearButton from '../components/common/ClearButton'
+import { Label } from '../components/common/Label'
 import ContextMenu from '../components/ContextMenu'
 import FlashCard from '../components/FlashCard'
 import { myContext } from '../Context'
@@ -53,23 +55,37 @@ const ProfilePage = () => {
   }, [show])
 
   // const ref = useRef(null)
-  const handleContextMenu = (event:any) => {
-    event.preventDefault();
+  const handleContextMenu = (event: any) => {
+    event.preventDefault()
     // console.log("ref ===",ref.current)
     // console.log("document===",document.getElementById(event.currentTarget))
-    console.log("event===",event.currentTarget.id)
+    console.log('event===', event.currentTarget.id)
     setId(parseInt(event.currentTarget.id))
     setShow(true)
   }
 
+  const deleteFlash =() => {
+    axios
+    .delete(`http://localhost:4000/api/flash/${id}/delete`)
+    .then(res => console.log(res.data))
+    .catch(err => console.error(err))
+  }
+
+  const handleDelete = () => {
+    console.log('deleting ', id)
+    deleteFlash()
+  }
+
   return (
     <>
-    
       <div className="fixed right-5 bottom-5">
         <Button text="Add Flash" onClick={handleNewFlash} />
-      </div>      
+      </div>
 
-      <ul className={`grid grid-cols-1 gap-4 md:grid-cols-3 mx-4 my-4 mb-[80px]  ${show ? "blur-sm z-[0]" : ""}`}>
+      <ul
+        className={`mx-4 my-4 mb-[80px] grid grid-cols-1 gap-4 md:grid-cols-3  ${
+          show ? 'z-[0] blur-sm' : ''
+        }`}>
         {flashes.map(flash => (
           <li key={flash.id} id={flash.id.toString()} onContextMenu={handleContextMenu}>
             <FlashCard
@@ -85,7 +101,14 @@ const ProfilePage = () => {
           </li>
         ))}
       </ul>
-      {show && <ContextMenu/>}
+      {show && (
+        <ContextMenu>
+          <ClearButton color="text-red-600" size="text-lg" onClick={handleDelete}>
+            Delete
+          </ClearButton>
+          <ClearButton size="text-lg"> Edit</ClearButton>
+        </ContextMenu>
+      )}
     </>
   )
 }
