@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
 import { useContext } from 'react'
-import Button from '../components/common/Button'
+import ClearButton from '../components/common/ClearButton'
 import { myContext } from '../Context'
 
 const Navbar = () => {
@@ -39,10 +39,10 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" fixed top-0 left-0 w-full">
+      <div className=" fixed top-0 left-0 w-full shadow-sm">
         <div
           className="w-screen items-center justify-between
-          bg-indigo-500 py-4 px-7 md:flex md:px-10">
+          bg-white py-4 px-7 md:flex md:px-10">
           <ul
             className="absolute left-0 z-[-1] w-full pb-7
               pl-9 transition-all duration-500 ease-in-out md:static md:z-auto md:flex
@@ -51,15 +51,15 @@ const Navbar = () => {
               <li key={link.title} className="my-2 text-xl md:my-0 md:ml-8">
                 <a
                   href={link.url}
-                  className=" text-sm font-bold
-                  text-slate-100 duration-500  hover:text-indigo-600">
+                  className=" text-2xl font-bold
+                  text-blue-500 duration-500  hover:text-blue-900">
                   {link.title}
                 </a>
               </li>
             ))}
             {context ? (
               <>
-                <Button text="Logout" onClick={handleLogout} />
+                <ClearButton onClick={handleLogout} tailwind="absolute mx-3 right-0 border-2 px-4 py-2" > Logout</ClearButton>
               </>
             ) : null}
           </ul>
