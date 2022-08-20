@@ -7,7 +7,7 @@ const FavoriteIcon = (props :any) => {
         className="mr-4 inline-block h-6 w-6 text-white"
         viewBox="0 0 450 550"
         fill={props.favorite ? "red" : "none" }
-        stroke='gray'
+        stroke={props.favorite ? "none" : "black" }
         strokeWidth="40"
         >
         

@@ -7,6 +7,7 @@ interface FlashTypes {
   createdAt: string
   id: number
   user_id: number
+  favorite: boolean
 }
 
 export default FlashTypes

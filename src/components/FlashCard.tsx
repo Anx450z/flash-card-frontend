@@ -26,12 +26,13 @@ const FlashCard = (props: FlashTypes) => {
       rounded-xl overflow-hidden`)
   }, [props.flashColor])
 
+
   return (
     <div className={style}>
-      <header className="bg-black/[0.1] p-2 flex items-start justify-between">
+      <header className=" p-2 flex items-start justify-between">
         {new Date(props.updatedAt || props.createdAt).toString().slice(0, 15)}
         <div className="flex items-start justify-between">
-          <FavoriteIcon />
+          <FavoriteIcon favorite={props.favorite} />
           <ClearButton size="text-xl2" text="font-[900]">. . .</ClearButton>
         </div>
       </header>
@@ -49,7 +50,7 @@ const FlashCard = (props: FlashTypes) => {
       </div>
       <footer className="bg-black/[0.1] px-4 py-2 flex items-start justify-between">
         <Label color="text-gray-600 ">{props.tag}</Label>
-        <Button text="Flip" />
+        <ClearButton>Flip</ClearButton>
         <input id="flashId" name="flashId" type="hidden" value={props.id}></input>
       </footer>
     </div>
