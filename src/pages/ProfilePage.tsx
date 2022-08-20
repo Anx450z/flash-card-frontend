@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/common/Button'
 import ContextMenu from '../components/ContextMenu'
@@ -42,10 +42,7 @@ const ProfilePage = () => {
     // console.log('flashes', flashes)
   }
   const [show, setShow] = useState(false)
-  const [position, setPosition] = useState({
-    x:"0",
-    y:"0"
-  })
+  const [id, setId] = useState(0)
 
   useEffect(() => {
     getFlashes()
@@ -55,26 +52,26 @@ const ProfilePage = () => {
     return () => window.removeEventListener('click', handleClick)
   }, [show])
 
-
+  // const ref = useRef(null)
   const handleContextMenu = (event:any) => {
     event.preventDefault();
+    // console.log("ref ===",ref.current)
+    // console.log("document===",document.getElementById(event.currentTarget))
+    console.log("event===",event.currentTarget.id)
+    setId(parseInt(event.currentTarget.id))
     setShow(true)
-    setPosition({x:`left-[100px]`, y:`top-[100px]`})
-
-    console.log("right clicked",event.pageX,event.pageY)
   }
 
   return (
     <>
+    
       <div className="fixed right-5 bottom-5">
         <Button text="Add Flash" onClick={handleNewFlash} />
-      </div>
-      <h1>Profile {context.firstName}</h1>
-      {show && <ContextMenu position={position}/>}
+      </div>      
 
-      <ul className="grid grid-cols-1 gap-4 md:grid-cols-3 mx-2 my-2 mb-[80px]">
+      <ul className={`grid grid-cols-1 gap-4 md:grid-cols-3 mx-4 my-4 mb-[80px]  ${show ? "blur-sm z-[0]" : ""}`}>
         {flashes.map(flash => (
-          <li key={flash.id} onContextMenu={handleContextMenu}>
+          <li key={flash.id} id={flash.id.toString()} onContextMenu={handleContextMenu}>
             <FlashCard
               question={flash.question}
               answer={flash.answer}
@@ -88,6 +85,7 @@ const ProfilePage = () => {
           </li>
         ))}
       </ul>
+      {show && <ContextMenu/>}
     </>
   )
 }

@@ -11,5 +11,6 @@
   "bracketSameLine": true,
   "arrowParens": "avoid",
   "proseWrap": "always",
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "tailwindConfig": "./tailwind.config.js"
 }
