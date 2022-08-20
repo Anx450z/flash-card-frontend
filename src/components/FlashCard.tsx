@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import FlashTypes from '../types/FlashType'
 import Button from './common/Button'
+import ClearButton from './common/ClearButton'
 import FavoriteIcon from './common/FavoriteIcon'
 import { Label } from './common/Label'
 
@@ -31,7 +32,7 @@ const FlashCard = (props: FlashTypes) => {
         {new Date(props.updatedAt || props.createdAt).toString().slice(0, 15)}
         <div className="flex items-start justify-between">
           <FavoriteIcon />
-          ...
+          <ClearButton size="text-xl2" text="font-[900]">. . .</ClearButton>
         </div>
       </header>
       <div className="p-4">

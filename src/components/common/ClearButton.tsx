@@ -5,7 +5,8 @@ const ClearButton = (props: any) => {
     <label
       className={` my-2 mx-0 block font-medium
        ${props.color ? props.color : 'text-gray-900'}
-                        ${props.size ? props.size : 'text-sm'} hover:bg-blue-600 hover:text-white`}
+        ${props.size ? props.size : 'text-sm'} hover:bg-blue-600 hover:text-white
+        ${props.text}`}
       onClick={props.onClick}>
       {props.children}
     </label>

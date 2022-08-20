@@ -1,9 +1,12 @@
 import axios from 'axios'
 import { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import NewFlashCard from '../components/NewFlashCard'
 import { myContext } from '../Context'
 
 const NewFlashPage = () => {
+
+  const navigate = useNavigate()
 
   const context: any = useContext(myContext)
   
@@ -32,8 +35,14 @@ const NewFlashPage = () => {
           .post(`http://localhost:4000/api/user/${context.id}/newflash`, actualData, {
             withCredentials: true,
           })
-          .then(res => console.log(res))
-          .catch(err => console.log(err))
+          .then((res) => {
+            console.log("res===",res.data)
+            setError(res.data)
+          })
+          .catch(err => console.log("err===",err))
+
+          if(error.type === "success")  navigate("/")
+          
       } catch (error) {
         setError({
           status: true,

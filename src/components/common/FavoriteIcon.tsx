@@ -1,14 +1,14 @@
 import React from 'react'
 
-const FavoriteIcon = () => {
+const FavoriteIcon = (props :any) => {
   return (
     <div>
       <svg
-        className="mr-2 inline-block h-5 w-5 text-white"
+        className="mr-4 inline-block h-6 w-6 text-white"
         viewBox="0 0 450 550"
-        fill="red"
-        stroke='black'
-        strokeWidth="20"
+        fill={props.favorite ? "red" : "none" }
+        stroke='gray'
+        strokeWidth="40"
         >
         
         <path
