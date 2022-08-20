@@ -27,6 +27,7 @@ const ProfilePage = () => {
       updatedAt: Date.now().toString(),
       createdAt: Date.now().toString(),
       user_id: 0,
+      favorite: false,
     },
   ])
 
@@ -64,11 +65,11 @@ const ProfilePage = () => {
     setShow(true)
   }
 
-  const deleteFlash =() => {
+  const deleteFlash = () => {
     axios
-    .delete(`http://localhost:4000/api/flash/${id}/delete`)
-    .then(res => console.log(res.data))
-    .catch(err => console.error(err))
+      .delete(`http://localhost:4000/api/flash/${id}/delete`)
+      .then(res => console.log(res.data))
+      .catch(err => console.error(err))
   }
 
   const handleDelete = () => {
@@ -82,12 +83,13 @@ const ProfilePage = () => {
         <Button text="Add Flash" onClick={handleNewFlash} />
       </div>
 
-      <ul
-        className={`mx-4 my-4 mb-[80px] grid grid-cols-1 gap-4 md:grid-cols-3  ${
-          show ? 'z-[0] blur-sm' : ''
-        }`}>
+      <ul className={`mx-4 my-4 mb-[80px] grid grid-cols-1 gap-4 md:grid-cols-3`}>
         {flashes.map(flash => (
-          <li key={flash.id} id={flash.id.toString()} onContextMenu={handleContextMenu}>
+          <li
+            key={flash.id}
+            id={flash.id.toString()}
+            onContextMenu={handleContextMenu}
+            className={` ${show && flash.id !== id ? 'z-[-1] blur-lg' : ''}`}>
             <FlashCard
               question={flash.question}
               answer={flash.answer}
@@ -97,6 +99,7 @@ const ProfilePage = () => {
               updatedAt={flash.updatedAt}
               id={flash.id}
               user_id={flash.user_id}
+              favorite={flash.favorite}
             />
           </li>
         ))}
