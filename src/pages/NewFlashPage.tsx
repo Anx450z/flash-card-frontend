@@ -5,11 +5,10 @@ import NewFlashCard from '../components/NewFlashCard'
 import { myContext } from '../Context'
 
 const NewFlashPage = () => {
-
   const navigate = useNavigate()
 
   const context: any = useContext(myContext)
-  
+
   const [error, setError] = useState({
     status: false,
     msg: '',
@@ -17,7 +16,7 @@ const NewFlashPage = () => {
   })
 
   const handleSubmit = (event: any) => {
-    console.log("clicked on submit button")
+    console.log('clicked on submit button')
     event.preventDefault()
 
     const data = new FormData(event.currentTarget)
@@ -25,7 +24,7 @@ const NewFlashPage = () => {
       question: data.get('question'),
       answer: data.get('answer'),
       tag: data.get('tag'),
-      flashColor: data.get('flashColor')
+      flashColor: data.get('flashColor'),
     }
     console.log(actualData)
     if (actualData.question && actualData.answer && context) {
@@ -35,20 +34,29 @@ const NewFlashPage = () => {
           .post(`http://localhost:4000/api/user/${context.id}/newflash`, actualData, {
             withCredentials: true,
           })
-          .then((res) => {
-            console.log("res===",res.data)
-            setError(res.data)
+          .then(res => {
+            console.log('res===', res.data.status)
+            setError({
+              msg : res.data.msg,
+              status : true,
+              type: res.data.status
+            })
           })
-          .catch(err => console.log("err===",err))
+          .catch(err => console.log('err===', err))
 
-          if(error.type === "success")  navigate("/")
-          
+        console.log("type===",error)
+        
       } catch (error) {
         setError({
           status: true,
           msg: error as string,
           type: 'error',
         })
+      }
+
+      if (error.type !== 'error') {
+        console.log("navigating")
+        navigate('/')
       }
     } else {
       setError({
@@ -61,8 +69,8 @@ const NewFlashPage = () => {
 
   return (
     <>
-      <div className="flex mx-auto justify-center item-center transition-all duration-500 ease-in-out">
-        <NewFlashCard onHandleSubmit={handleSubmit} error={error}/>
+      <div className="item-center mx-auto flex justify-center transition-all duration-500 ease-in-out">
+        <NewFlashCard onHandleSubmit={handleSubmit} error={error} />
       </div>
     </>
   )

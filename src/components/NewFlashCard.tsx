@@ -47,19 +47,40 @@ const NewFlashCard = (props: any) => {
     })
   }
 
+  const [textQuestion, setTextQuestion] = useState('')
+  const [textAnswer, setTextAnswer] = useState('')
+
+  const handleQuestion = (event: any) => {
+      setTextQuestion(event.currentTarget.value)
+    
+  }
+  const handleAnswer = (event: any) => {
+      setTextAnswer(event.currentTarget.value)
+    }
+
   return (
     <Card color={color.backgroundColor}>
       <form className="space-y-6" onSubmit={props.onHandleSubmit} id="new-flash-form">
         <h3 className="text-xl font-medium text-gray-900">Create a new flash</h3>
         <div>
-          <Label>Your Question</Label>
-          <TextArea id="question" name="question">
+          <div className="flex items-start justify-between">
+            <Label>Your Question</Label>
+            <Label tailwind="text-xs text-gray-400 font-[100]">
+              Characters left : {127 - textQuestion.length}
+            </Label>
+          </div>
+          <TextArea id="question" name="question" onChange={handleQuestion} value={textQuestion}>
             Boiling point of water
           </TextArea>
         </div>
         <div>
-          <Label>Your Answer</Label>
-          <TextArea id="answer" name="answer">
+          <div className="flex items-start justify-between">
+            <Label>Your Answer</Label>
+            <Label tailwind="text-xs text-gray-400 font-[100]">
+              Characters left : {255 - textAnswer.length}
+            </Label>
+          </div>
+          <TextArea id="answer" name="answer" onChange={handleAnswer} value={textAnswer}>
             100 degrees celsius
           </TextArea>
         </div>
@@ -72,7 +93,7 @@ const NewFlashCard = (props: any) => {
         <div>
           <Label>Flash background color</Label>
         </div>
-        <div className="flex justify-evenly items-start px-20">
+        <div className="flex items-start justify-evenly px-20">
           <ColorSelectionButton color={'#ffffff'} onClick={handleffffff} />
           <ColorSelectionButton color={'#fff1cc'} onClick={handlefff1cc} />
           <ColorSelectionButton color={'#dbffcc'} onClick={handledbffcc} />

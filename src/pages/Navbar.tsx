@@ -47,7 +47,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className=" fixed top-0 left-0 w-full shadow-sm">
+      <div className=" fixed top-0 left-0 w-full shadow-sm z-[1]">
         <div
           className="w-screen items-center justify-between
           bg-white py-4 px-7 md:flex md:px-10">

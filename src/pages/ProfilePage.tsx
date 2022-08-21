@@ -78,10 +78,10 @@ const ProfilePage = () => {
 
   return (
     <>
-      <div className="fixed right-5 bottom-5">
+      <div className="fixed right-5 bottom-5 z-[2]">
         <Button text="Add Flash" onClick={handleNewFlash} />
       </div>
-      <div className='flex justify-center bg-slate-100 z-[-1]'>
+      <div className='flex justify-center bg-slate-100'>
       <ul className={`bg-white mx-4 my-4 mb-[80px] grid grid-cols-2 gap-4 md:grid-cols-3
           p-4 rounded-xl max-w-[70rem] min-w-[25rem] border`}>
         {flashes.map(flash => (
@@ -89,7 +89,7 @@ const ProfilePage = () => {
             key={flash.id}
             id={flash.id.toString()}
             onContextMenu={handleContextMenu}
-            className={` ${show && flash.id !== id ? 'z-[0] blur-lg' : ''}`}>
+            className={` ${show && flash.id !== id ? 'blur-lg' : ''}`}>
             <FlashCard
               question={flash.question}
               answer={flash.answer}

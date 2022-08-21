@@ -37,12 +37,12 @@ const FlashCard = (props: FlashTypes) => {
   return (
     <div className={style}>
       <header className=" flex items-start justify-between p-2">
-        <Label tailwind="text-xs text-gray-500">
+        <Label tailwind="text-xs text-black/[0.4] hover:text-black">
           {new Date(props.updatedAt || props.createdAt).toString().slice(0, 15)}
         </Label>
         <div className="flex items-start justify-between">
           <FavoriteIcon favorite={props.favorite} />
-          <ClearButton size="text-xl2" text="font-[900]" tailwind=" px-2 py-0 text-gray-400">
+          <ClearButton size="text-xl2" text="font-[900]" tailwind=" px-2 py-0 text-black/[0.4] hover:text-black">
             . . .
           </ClearButton>
         </div>
@@ -67,7 +67,7 @@ const FlashCard = (props: FlashTypes) => {
       </div>
       <footer className="flex items-start justify-between bg-black/[0.05] px-4 py-2">
         <Label color="text-gray-600 " tailwind="mt-2 capitalize">{props.tag}</Label>
-        <ClearButton onClick={handleFlip} tailwind="px-4 py-2">Flip</ClearButton>
+        <ClearButton onClick={handleFlip} tailwind="px-4 py-2 text-black/[0.2] hover:text-black">Flip</ClearButton>
         <input id="flashId" name="flashId" type="hidden" value={props.id}></input>
       </footer>
     </div>
