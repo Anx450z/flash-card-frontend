@@ -4,10 +4,10 @@ import NewFlashCard from '../components/NewFlashCard'
 
 const EditFlashPage = () => {
   const { state }: any = useLocation()
-  console.log('selectedFlash', state)
+  // console.log('selectedFlash', state)
   const handleSubmit = (event: Event) => {
     event.preventDefault()
-    // console.log('submitted')
+    console.log('submitted')
   }
 
   const fillForm = () =>{

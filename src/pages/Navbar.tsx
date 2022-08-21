@@ -50,7 +50,7 @@ const Navbar = () => {
       <div className=" fixed top-0 left-0 w-full shadow-sm z-[1]">
         <div
           className="w-screen items-center justify-between
-          bg-white py-4 px-7 md:flex md:px-10">
+          bg-white/[0.1] py-4 px-7 md:flex md:px-10 backdrop-blur-lg">
           <ul
             className="absolute left-0 z-[-1] w-full pb-7
               pl-9 transition-all duration-500 ease-in-out md:static md:z-auto md:flex
@@ -64,7 +64,7 @@ const Navbar = () => {
                 />
                 <ClearButton
                   onClick={handleLogout}
-                  tailwind="absolute mx-3 right-0 border-2 px-4 py-2">
+                  tailwind="absolute mx-3 right-5 bg-black/[0.1] px-4 py-2">
                   {' '}
                   Logout
                 </ClearButton>
@@ -72,7 +72,7 @@ const Navbar = () => {
             ) : (
               <ClearButton
                 onClick={handleLogin}
-                tailwind="relative mx-3 right-0 border-2 px-4 py-2 md:absolute">
+                tailwind="absolute mx-3 right-5 bg-black/[0.1] px-4 py-2">
                 {' '}
                 Login
               </ClearButton>

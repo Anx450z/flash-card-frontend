@@ -62,11 +62,11 @@ const NewFlashCard = (props: any) => {
   return (
     <Card color={color.backgroundColor || props.flashColor}>
       <form className="space-y-6" onSubmit={props.onHandleSubmit} id="flash-form">
-        <h3 className="text-xl font-medium text-gray-900">{props.title || 'Create a new flash'}</h3>
+        <h3 className="text-xl font-medium text-black/[0.7]">{props.title || 'Create a new flash'}</h3>
         <div>
           <div className="flex items-start justify-between">
             <Label>Your Question</Label>
-            <Label tailwind="text-xs text-gray-400 font-[100]">
+            <Label tailwind="text-xs text-black/[0.5] font-[700]">
               Characters left : {127 - textQuestion.length}
             </Label>
           </div>
@@ -77,7 +77,7 @@ const NewFlashCard = (props: any) => {
         <div>
           <div className="flex items-start justify-between">
             <Label>Your Answer</Label>
-            <Label tailwind="text-xs text-gray-400 font-[100]">
+            <Label tailwind="text-xs text-black/[0.5] font-[700]">
               Characters left : {255 - textAnswer.length}
             </Label>
           </div>
@@ -92,7 +92,7 @@ const NewFlashCard = (props: any) => {
           </TextField>
         </div>
         <div>
-          <Label>Flash background color</Label>
+          <Label>Background color</Label>
         </div>
         <div className="flex items-start justify-evenly px-20">
           <ColorSelectionButton color={'#ffffff'} onClick={handleffffff}/>

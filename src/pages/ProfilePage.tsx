@@ -59,7 +59,7 @@ const ProfilePage = () => {
     event.preventDefault()
     // console.log("ref ===",ref.current)
     // console.log("document===",document.getElementById(event.currentTarget))
-    console.log('event===', event.currentTarget.id)
+    // console.log('event===', event.currentTarget.id)
     setId(parseInt(event.currentTarget.id))
     setShow(true)
   }
