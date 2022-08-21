@@ -47,7 +47,6 @@ const FlashCard = (props: FlashTypes) => {
         },
         { withCredentials: true }
       )
-      .then(res => console.log("set to favorite " + isFav + res.data))
       .catch(err => console.error(err))
   }, [props.flashColor, isFav])
 

@@ -5,6 +5,7 @@ const TextArea = (props: any) => {
     <textarea
       rows={5}
       cols={5}
+      required
       name={props.name}
       id={props.id}
       onChange={props.onChange}
@@ -14,6 +15,7 @@ const TextArea = (props: any) => {
             focus:ring-blue-500 sm:text-sm"
       placeholder={props.children}
       value={props.text}
+      wrap="soft"
     />
   )
 }

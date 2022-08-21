@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { CircularLoading } from "./CircularLoading";
 
 function Button(props: any) {
-  let style = `text-white bg-blue-700 hover:bg-blue-800'
+  let style = `text-black bg-black/[0.1] hover:bg-black/[0.3]'
               font-medium rounded-lg text-m px-5 py-2 text-center md:ml-8
-              hover:bg-blue-800 focus:ring-4 focus:ring-blue-300`;
+              hover:bg-black/[0.3] focus:ring-4 focus:ring-black-300 backdrop-blur-lg`;
   if (props.type === "expanded") {
-    style = `w-full text-white bg-blue-700 hover:bg-blue-800' 
+    style = `w-full text-black bg-black/[0.1] hover:bg-black/[0.3]' 
             font-medium rounded-lg text-m px-5 py-2 text-center
-            hover:bg-blue-800 focus:ring-4 focus:ring-blue-300`;
+            hover:bg-black/[0.3] focus:ring-4 focus:ring-blue-300 backdrop-blur-lg`;
   }
 
   const [disabled, setDisabled] = useState(false);

@@ -19,7 +19,7 @@ const NewFlashPage = () => {
     console.log('clicked on submit button')
     event.preventDefault()
 
-    const data = new FormData(event.currentTarget)
+    const data = new FormData(event.currentTarget) 
     const actualData = {
       question: data.get('question'),
       answer: data.get('answer'),
@@ -69,7 +69,7 @@ const NewFlashPage = () => {
 
   return (
     <>
-      <div className="item-center mx-auto flex justify-center transition-all duration-500 ease-in-out">
+      <div className="bg-slate-100 item-center mx-auto flex justify-center transition-all duration-500 ease-in-out">
         <NewFlashCard onHandleSubmit={handleSubmit} error={error} />
       </div>
     </>

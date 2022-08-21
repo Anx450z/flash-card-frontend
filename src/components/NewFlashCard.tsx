@@ -8,7 +8,7 @@ import ColorSelectionButton from './common/ColorSelectionButton'
 
 const NewFlashCard = (props: any) => {
   const [color, setColor] = useState({
-    backgroundColor: 'bg-[#ffffff]',
+    backgroundColor: "",
     color: '#ffffff',
   })
   const handleffffff = (event: any) => {
@@ -51,17 +51,18 @@ const NewFlashCard = (props: any) => {
   const [textAnswer, setTextAnswer] = useState('')
 
   const handleQuestion = (event: any) => {
-      setTextQuestion(event.currentTarget.value)
-    
+    setTextQuestion(event.currentTarget.value)
   }
   const handleAnswer = (event: any) => {
-      setTextAnswer(event.currentTarget.value)
-    }
+    setTextAnswer(event.currentTarget.value)
+  }
+
+  // console.log("formdata", props.formData)
 
   return (
-    <Card color={color.backgroundColor}>
-      <form className="space-y-6" onSubmit={props.onHandleSubmit} id="new-flash-form">
-        <h3 className="text-xl font-medium text-gray-900">Create a new flash</h3>
+    <Card color={color.backgroundColor || props.flashColor}>
+      <form className="space-y-6" onSubmit={props.onHandleSubmit} id="flash-form">
+        <h3 className="text-xl font-medium text-gray-900">{props.title || 'Create a new flash'}</h3>
         <div>
           <div className="flex items-start justify-between">
             <Label>Your Question</Label>
@@ -94,14 +95,18 @@ const NewFlashCard = (props: any) => {
           <Label>Flash background color</Label>
         </div>
         <div className="flex items-start justify-evenly px-20">
-          <ColorSelectionButton color={'#ffffff'} onClick={handleffffff} />
+          <ColorSelectionButton color={'#ffffff'} onClick={handleffffff}/>
           <ColorSelectionButton color={'#fff1cc'} onClick={handlefff1cc} />
           <ColorSelectionButton color={'#dbffcc'} onClick={handledbffcc} />
           <ColorSelectionButton color={'#ffcccc'} onClick={handleffcccc} />
           <ColorSelectionButton color={'#cce5ff'} onClick={handlecce5ff} />
         </div>
         <input id="flashColor" name="flashColor" type="hidden" value={color.color}></input>
-        <Button type="expanded" text="Add new Flash" isLoading={props.isLoading} />
+        <Button
+          type="expanded"
+          text={props.buttonText || 'Add new Flash'}
+          isLoading={props.isLoading}
+        />
       </form>
     </Card>
   )

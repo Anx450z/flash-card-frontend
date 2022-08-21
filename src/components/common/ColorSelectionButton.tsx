@@ -17,7 +17,7 @@ function ColorSelectionButton(props: any) {
     } else {
       color = 'bg-[#ffffff]'
     }
-    setColor(`${color} shadow-xl border
+    setColor(`${color}
       rounded-xl overflow-hidden`)
   }, [props.color])
 
@@ -25,11 +25,12 @@ function ColorSelectionButton(props: any) {
   return (
     <>
       <button
-        className={`rounded-full ${color} border border-solid px-4 py-4
-        focus:ring-8 focus:ring-blue-600`}
+        className={`rounded-full ${color} border-2 border-black/[0.2] px-4 py-4
+        focus:ring-4 focus:ring-black/[0.2]`}
         onClick={props.onClick}
-        disabled={props.disabled}>
-      </button>
+        disabled={props.disabled}
+        autoFocus={props.autoFocus}
+        />
     </>
   );
 }

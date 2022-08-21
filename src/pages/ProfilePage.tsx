@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { NavigateOptions, useNavigate } from 'react-router-dom'
 import Button from '../components/common/Button'
 import ClearButton from '../components/common/ClearButton'
 import ContextMenu from '../components/ContextMenu'
@@ -76,6 +76,12 @@ const ProfilePage = () => {
     deleteFlash()
   }
 
+  const handleEdit = () => {
+    const selectedFlash = flashes.filter(flash => flash.id === id)[0]
+    console.log("edit clicked", id, selectedFlash)
+    navigate(`/edit`, {state : selectedFlash })
+  }
+
   return (
     <>
       <div className="fixed right-5 bottom-5 z-[2]">
@@ -110,7 +116,7 @@ const ProfilePage = () => {
           <ClearButton color="text-red-600" size="text-lg" onClick={handleDelete}>
             Delete
           </ClearButton>
-          <ClearButton size="text-lg"> Edit</ClearButton>
+          <ClearButton size="text-lg" onClick={handleEdit}> Edit</ClearButton>
         </ContextMenu>
       )}
     </>
