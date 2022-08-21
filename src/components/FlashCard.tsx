@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useEffect, useState } from 'react'
 import FlashTypes from '../types/FlashType'
 import ClearButton from './common/ClearButton'
@@ -13,6 +14,12 @@ const FlashCard = (props: FlashTypes) => {
   const handleFlip = () => {
     setFlip(!flip)
     // console.log("flipped", flip)
+  }
+
+  const [isFav, setIsFav] = useState(props.favorite)
+
+  const handleFavorite = () => {
+    setIsFav(!isFav)
   }
 
   useEffect(() => {
@@ -31,8 +38,18 @@ const FlashCard = (props: FlashTypes) => {
     setStyle(`${color}  border hover:shadow-2xl
       rounded-xl overflow-hidden transition-all duration-500 ease-in-out`)
 
-    
-  }, [props.flashColor])
+      axios
+      .patch(
+        'http://localhost:4000/api/flash/favorite',
+        {
+          flashId: props.id,
+          favorite: isFav,
+        },
+        { withCredentials: true }
+      )
+      .then(res => console.log("set to favorite " + isFav + res.data))
+      .catch(err => console.error(err))
+  }, [props.flashColor, isFav])
 
   return (
     <div className={style}>
@@ -41,8 +58,11 @@ const FlashCard = (props: FlashTypes) => {
           {new Date(props.updatedAt || props.createdAt).toString().slice(0, 15)}
         </Label>
         <div className="flex items-start justify-between">
-          <FavoriteIcon favorite={props.favorite} />
-          <ClearButton size="text-xl2" text="font-[900]" tailwind=" px-2 py-0 text-black/[0.4] hover:text-black">
+          <FavoriteIcon favorite={isFav} onClick={handleFavorite} />
+          <ClearButton
+            size="text-xl2"
+            text="font-[900]"
+            tailwind=" px-2 py-0 text-black/[0.4] hover:text-black">
             . . .
           </ClearButton>
         </div>
@@ -63,11 +83,14 @@ const FlashCard = (props: FlashTypes) => {
             </Label>
           </>
         )}
-
       </div>
       <footer className="flex items-start justify-between bg-black/[0.05] px-4 py-2">
-        <Label color="text-gray-600 " tailwind="mt-2 capitalize">{props.tag}</Label>
-        <ClearButton onClick={handleFlip} tailwind="px-4 py-2 text-black/[0.2] hover:text-black">Flip</ClearButton>
+        <Label color="text-gray-600 " tailwind="mt-2 capitalize">
+          {props.tag}
+        </Label>
+        <ClearButton onClick={handleFlip} tailwind="px-4 py-2 text-black/[0.2] hover:text-black">
+          Flip
+        </ClearButton>
         <input id="flashId" name="flashId" type="hidden" value={props.id}></input>
       </footer>
     </div>

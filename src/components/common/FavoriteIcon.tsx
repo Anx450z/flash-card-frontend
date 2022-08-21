@@ -2,7 +2,7 @@ import React from 'react'
 
 const FavoriteIcon = (props :any) => {
   return (
-    <div>
+    <div onClick={props.onClick}>
       <svg
         className="mr-4 inline-block h-6 w-6 text-white cursor-pointer"
         viewBox="0 0 450 550"
