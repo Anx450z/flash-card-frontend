@@ -9,6 +9,7 @@ const backdrop = require('../assets/backdrop.jpg')
 const EditFlashPage = () => {
   const { state }: any = useLocation()
   // console.log('selectedFlash', state)
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState({
     status: false,
     msg: '',
@@ -31,14 +32,17 @@ const EditFlashPage = () => {
     }
     // console.log(actualData)
     if (actualData.question && actualData.answer && context) {
-      console.log(actualData)
+      // console.log(actualData)
+    
+
       try {
+        setIsLoading(true)
         axios
           .put(`http://localhost:4000/api/flash/edit`, actualData, {
             withCredentials: true,
           })
           .then(res => {
-            console.log('res===', res.data.status)
+            // console.log('res===', res.data.status)
             setError({
               msg: res.data.msg,
               status: true,
@@ -46,6 +50,7 @@ const EditFlashPage = () => {
             })
           })
           .catch(err => console.log('err===', err))
+          .finally(() => console.log('done===', setIsLoading(false)));
 
         console.log('type===', error)
       } catch (error) {

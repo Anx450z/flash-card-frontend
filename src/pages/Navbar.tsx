@@ -29,7 +29,7 @@ const Navbar = () => {
         url: '/',
       },
       {
-        title : 'Favorites',
+        title : 'About',
         url: '#'
       }
     ]

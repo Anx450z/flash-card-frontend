@@ -11,7 +11,7 @@ const NewFlashPage = () => {
   const navigate = useNavigate()
 
   const context: any = useContext(myContext)
-
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState({
     status: false,
     msg: '',
@@ -19,7 +19,7 @@ const NewFlashPage = () => {
   })
 
   const handleSubmit = (event: any) => {
-    console.log('clicked on submit button')
+    // console.log('clicked on submit button')
     event.preventDefault()
 
     const data = new FormData(event.currentTarget)
@@ -31,7 +31,8 @@ const NewFlashPage = () => {
     }
     console.log(actualData)
     if (actualData.question && actualData.answer && context) {
-      console.log(actualData)
+      // console.log(actualData)
+      setIsLoading(true)
       try {
         axios
           .post(`http://localhost:4000/api/user/${context.id}/newflash`, actualData, {
@@ -46,6 +47,7 @@ const NewFlashPage = () => {
             })
           })
           .catch(err => console.log('err===', err))
+          .finally(() => setIsLoading(false))
 
         console.log('type===', error)
       } catch (error) {
@@ -77,7 +79,7 @@ const NewFlashPage = () => {
         className="item-center mx-auto flex h-screen justify-center
         transition-all duration-500 ease-in-out ">
         <div className='mt-[5%]'>
-          <NewFlashCard onHandleSubmit={handleSubmit} error={error} flashColor="bg-white" />
+          <NewFlashCard onHandleSubmit={handleSubmit} error={error} flashColor="bg-white" isLoading={isLoading} />
         </div>
       </div>
     </>

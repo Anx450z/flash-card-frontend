@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/common/Button'
 import ClearButton from '../components/common/ClearButton'
+import DropDown from '../components/common/DropDown'
 import ContextMenu from '../components/ContextMenu'
 import FlashCard from '../components/FlashCard'
 import { myContext } from '../Context'
@@ -25,12 +26,13 @@ const ProfilePage = () => {
       tag: 'NA',
       flashColor: '#ffffff',
       id: 0,
-      updatedAt: Date.now().toString(),
-      createdAt: Date.now().toString(),
+      updatedAt: new Date().toDateString(),
+      createdAt: new Date().toString(),
       user_id: 0,
       favorite: false,
     },
   ])
+
   const getFlashes = () => {
     axios
       .get(`http://localhost:4000/api/user/${context.id}/flashes`, {
@@ -55,7 +57,7 @@ const ProfilePage = () => {
     return () => window.removeEventListener('click', handleClick)
   }, [show])
 
-  useEffect(() => getFlashes(),[])
+  useEffect(() => getFlashes(), [])
 
   // const ref = useRef(null)
   const handleContextMenu = (event: any) => {
@@ -88,14 +90,31 @@ const ProfilePage = () => {
   return (
     <>
       <img className="fixed z-[-1] mt-10 h-screen w-screen border-2" src={backdrop} alt="test" />
-
+      <div className="fixed left-[42%] z-[3] mt-2 flex items-start justify-center">
+        <DropDown
+          tailwind="border-4 border-transparent shadow-lg py-2 px-8 text-center rounded-md
+        bg-white/[0.8] hover:border-4 hover:border-black/[0.5] font-[500] text-black/[0.8] capitalize">
+          {flashes
+            .map(flash => flash.tag)
+            .filter((value, index, self) => self.indexOf(value) === index)
+            .map(tag => (
+              <option id={tag} key={tag} value={tag} className="font-[500] capitalize text-black">
+                {tag}
+              </option>
+            ))}
+        </DropDown>
+        <ClearButton tailwind="py-2.5 px-7 mx-2 bg-white/[0.8] shadow-sm
+          border-4 border-transparent hover:border-4 hover:border-black/[0.5] ">
+          Filter
+        </ClearButton>
+      </div>
       <div className="fixed right-8 bottom-5 z-[2] ">
         <Button text="Add Flash" onClick={handleNewFlash} />
       </div>
       <div className="flex justify-center ">
         <ul
           className={`mx-4 my-4 mt-[90px] mb-[80px] grid min-w-[25rem] max-w-[70rem] grid-cols-2 gap-4
-          rounded-xl border bg-white/[0.7] p-4 md:grid-cols-3 backdrop-blur-lg`}>
+          rounded-xl border bg-white/[0.7] p-4 backdrop-blur-lg md:grid-cols-3`}>
           {flashes.map(flash => (
             <li
               key={flash.id}

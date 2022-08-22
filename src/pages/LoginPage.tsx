@@ -1,12 +1,12 @@
 import React from 'react'
 import Button from '../components/common/Button'
 import { Card } from '../components/common/Card'
+const backdrop = require('../assets/backdrop.jpg')
 
 const LoginPage = (props: any) => {
   const googleLogin = () => {
     window.open('http://localhost:4000/auth/google', '_self')
   }
-  const backdrop = require('../assets/backdrop.jpg')
 
   return (
     <>
