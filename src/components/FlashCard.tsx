@@ -60,12 +60,12 @@ const FlashCard = (props: FlashTypes) => {
         </Label>
         <div className="flex items-start justify-between">
           <FavoriteIcon favorite={isFav} onClick={handleFavorite} />
-          <ClearButton
+          {/* <ClearButton
             size="text-xl2"
             text="font-[900]"
             tailwind=" px-2 py-0 text-black/[0.4] hover:text-black">
             . . .
-          </ClearButton>
+          </ClearButton> */}
         </div>
       </header>
       <div className="p-4 text-center" onClick={handleFlip}>
