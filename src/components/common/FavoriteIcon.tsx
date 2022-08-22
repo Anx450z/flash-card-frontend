@@ -5,10 +5,11 @@ const FavoriteIcon = (props :any) => {
     <div onClick={props.onClick}>
       <svg
         className="mr-4 inline-block h-6 w-6 text-white cursor-pointer"
-        viewBox="0 0 450 550"
+        viewBox="0 0 455 550"
         fill={props.favorite ? "red" : "none" }
-        stroke={props.favorite ? "none" : "gray" }
-        strokeWidth="25"
+        stroke={props.favorite ? "none" : "black" }
+        strokeWidth="50"
+        strokeOpacity="0.3"
         >
         
         <path

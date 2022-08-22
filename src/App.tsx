@@ -13,7 +13,7 @@ function App() {
   const userObject = useContext(myContext)
   console.log('app.tsx == ', userObject)
   return (
-    <div className="font-[poppins]">
+    <div className="font-[poppins] transition-all duration-500 ease-in-out">
       <BrowserRouter>
         <Navbar />
         <Routes>

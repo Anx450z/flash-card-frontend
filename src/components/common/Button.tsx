@@ -7,7 +7,7 @@ function Button(props: any) {
               focus:ring-4 focus:ring-black/[0.3] backdrop-blur-lg backdrop-saturate-200`;
   if (props.type === "expanded") {
     style = `w-full text-black bg-black/[0.1] hover:bg-white/[0.5] hover:shadow-lg
-            font-medium rounded-lg text-m px-5 py-2 text-center 
+            font-medium rounded-lg text-m px-5 py-2 text-center
             focus:ring-4 focus:ring-black/[0.3] backdrop-blur-lg mt-2 backdrop-saturate-200`;
   }
 

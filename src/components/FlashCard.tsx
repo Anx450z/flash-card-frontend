@@ -20,6 +20,16 @@ const FlashCard = (props: FlashTypes) => {
 
   const handleFavorite = () => {
     setIsFav(!isFav)
+    axios
+      .patch(
+        'http://localhost:4000/api/flash/favorite',
+        {
+          flashId: props.id,
+          favorite: !isFav,
+        },
+        { withCredentials: true }
+      )
+      .catch(err => console.error(err))
   }
 
   useEffect(() => {
@@ -35,24 +45,13 @@ const FlashCard = (props: FlashTypes) => {
     } else {
       color = 'bg-[#ffffff]'
     }
-    setStyle(`${color}  border hover:shadow-2xl ${
-      flip ? 'border-4 border-green-600' : 'border-4 border-transparent shadow-sm'
-    }
-      rounded-xl transition-all duration-500 ease-in-out h-full flex flex-col justify-between hover:saturate-200`)
+    setStyle(`${color}  border hover:shadow-2xl  ${
+      flip
+        ? 'border-4 border-green-600'
+        : 'border-4 border-transparent shadow-sm hover:border-black/[0.2]'
+    } rounded-xl transition-all duration-500 ease-in-out h-full flex flex-col
+      justify-between hover:saturate-200`)
   }, [props.flashColor, flip])
-
-  useEffect(() => {
-    axios
-      .patch(
-        'http://localhost:4000/api/flash/favorite',
-        {
-          flashId: props.id,
-          favorite: isFav,
-        },
-        { withCredentials: true }
-      )
-      .catch(err => console.error(err))
-  }, [isFav, props.id])
 
   return (
     <div className={style}>
@@ -70,7 +69,6 @@ const FlashCard = (props: FlashTypes) => {
           </ClearButton> */}
         </div>
       </header>
-
       <div className="p-4 text-center" onClick={handleFlip}>
         {flip ? (
           <>
@@ -88,7 +86,9 @@ const FlashCard = (props: FlashTypes) => {
           </>
         )}
       </div>
-      <footer className="mb-0 flex items-start justify-between bg-black/[0.05] px-4 py-2 opacity-0 hover:opacity-100">
+      <footer
+        className="mb-0 flex items-start justify-between rounded-b-lg bg-black/[0.05] px-4
+        py-2 opacity-0 transition-all duration-500 ease-in-out hover:opacity-100">
         <Label color="text-black/[0.5] " tailwind="mt-2 capitalize">
           {props.tag}
         </Label>

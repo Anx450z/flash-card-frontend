@@ -7,9 +7,9 @@ export const TextField = (props: any) => {
       name={props.name}
       id={props.id}
       className="block w-full
-        rounded-lg border-2 border-black/[0.2] bg-white/[0.5]
+        rounded-lg border-4 border-black/[0.2] bg-white/[0.5]
           p-2.5 text-black/[0.8] focus:border-blue-500
-          focus:ring-blue-500 sm:text-md font-[500]"
+          focus:ring-blue-500 sm:text-md font-[500] hover:border-black/[0.5]"
       placeholder={props.children}
     />
   )

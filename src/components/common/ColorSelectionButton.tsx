@@ -25,8 +25,8 @@ function ColorSelectionButton(props: any) {
   return (
     <>
       <button
-        className={`rounded-full ${color} border-2 border-black/[0.2] px-4 py-4
-        focus:ring-4 focus:ring-black/[0.2]`}
+        className={`rounded-full ${color} border-4 border-black/[0.2] px-4 py-4
+        focus:ring-4 focus:ring-black/[0.2] mx-4`}
         onClick={props.onClick}
         disabled={props.disabled}
         autoFocus={props.autoFocus}
