@@ -13,7 +13,7 @@ function App() {
   const userObject = useContext(myContext)
   console.log('app.tsx == ', userObject)
   return (
-    <>
+    <div className="font-[poppins]">
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -25,7 +25,7 @@ function App() {
           <Route path="*" element={<h1>This page does not exist</h1>} />
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 

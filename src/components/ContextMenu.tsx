@@ -6,8 +6,8 @@ const ContextMenu = (props: any) => {
     <div className="fixed w-screen h-screen flex justify-center top-0 overflow-hidden">
       <div
         className={`absolute  w-[8rem] top-[35%]
-    cursor-context-menu rounded-lg border border-gray-200 bg-white text-center
-    font-[500] capitalize shadow-xl ${props.index} `}>
+    cursor-context-menu rounded-lg bg-white/[0.7] text-center
+    font-[500] capitalize shadow-xl ${props.index} backdrop-blur-lg`}>
         <Label color="text-gray-600" size="text-lg">Options</Label>
         <hr></hr>
         {props.children}

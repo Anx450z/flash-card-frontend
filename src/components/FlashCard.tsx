@@ -35,10 +35,12 @@ const FlashCard = (props: FlashTypes) => {
     } else {
       color = 'bg-[#ffffff]'
     }
-    setStyle(`${color}  border hover:shadow-2xl
+    setStyle(`${color}  border hover:shadow-2xl ${
+      flip ? 'border-4 border-green-600' : 'border-4 border-transparent shadow-sm'
+    }
       rounded-xl overflow-hidden transition-all duration-500 ease-in-out`)
 
-      axios
+    axios
       .patch(
         'http://localhost:4000/api/flash/favorite',
         {
@@ -48,7 +50,7 @@ const FlashCard = (props: FlashTypes) => {
         { withCredentials: true }
       )
       .catch(err => console.error(err))
-  }, [props.flashColor, isFav])
+  }, [props.flashColor, isFav, flip])
 
   return (
     <div className={style}>
@@ -66,25 +68,25 @@ const FlashCard = (props: FlashTypes) => {
           </ClearButton>
         </div>
       </header>
-      <div className="p-4 ">
+      <div className="p-4 text-center" onClick={handleFlip}>
         {flip ? (
           <>
-            <Label color="text-gray-600">Answer</Label>
-            <Label color="text-green-600" size="text-lg">
+            <Label color="text-black/[0.5]">Answer</Label>
+            <Label color="text-black/[0.8]" size="text-lg" tailwind="font-[700]">
               {props.answer}
             </Label>
           </>
         ) : (
           <>
-            <Label color="text-gray-600">Question</Label>
-            <Label color="text-red-600" size="text-lg">
+            <Label color="text-black/[0.5]">Question</Label>
+            <Label color="text-black/[0.8]" size="text-lg" tailwind="font-[700]">
               {props.question}
             </Label>
           </>
         )}
       </div>
-      <footer className="flex items-start justify-between bg-black/[0.05] px-4 py-2">
-        <Label color="text-gray-600 " tailwind="mt-2 capitalize">
+      <footer className="flex items-start justify-between bg-black/[0.05] px-4 py-2 opacity-0 hover:opacity-100">
+        <Label color="text-black/[0.5] " tailwind="mt-2 capitalize">
           {props.tag}
         </Label>
         <ClearButton onClick={handleFlip} tailwind="px-4 py-2 text-black/[0.2] hover:text-black">
