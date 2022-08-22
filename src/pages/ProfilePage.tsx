@@ -95,7 +95,7 @@ const ProfilePage = () => {
       <div className="flex justify-center ">
         <ul
           className={`mx-4 my-4 mt-[90px] mb-[80px] grid min-w-[25rem] max-w-[70rem] grid-cols-2 gap-4
-          rounded-xl border bg-white p-4 md:grid-cols-3`}>
+          rounded-xl border bg-white/[0.7] p-4 md:grid-cols-3 backdrop-blur-lg`}>
           {flashes.map(flash => (
             <li
               key={flash.id}

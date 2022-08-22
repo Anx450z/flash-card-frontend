@@ -38,8 +38,10 @@ const FlashCard = (props: FlashTypes) => {
     setStyle(`${color}  border hover:shadow-2xl ${
       flip ? 'border-4 border-green-600' : 'border-4 border-transparent shadow-sm'
     }
-      rounded-xl transition-all duration-500 ease-in-out h-full flex flex-col justify-between `)
+      rounded-xl transition-all duration-500 ease-in-out h-full flex flex-col justify-between hover:saturate-200`)
+  }, [props.flashColor, flip])
 
+  useEffect(() => {
     axios
       .patch(
         'http://localhost:4000/api/flash/favorite',
@@ -50,7 +52,7 @@ const FlashCard = (props: FlashTypes) => {
         { withCredentials: true }
       )
       .catch(err => console.error(err))
-  }, [props.flashColor, isFav, flip])
+  }, [isFav])
 
   return (
     <div className={style}>
@@ -69,7 +71,7 @@ const FlashCard = (props: FlashTypes) => {
         </div>
       </header>
 
-      <div className="p-4 text-center " onClick={handleFlip}>
+      <div className="p-4 text-center" onClick={handleFlip}>
         {flip ? (
           <>
             <Label color="text-black/[0.5]">Answer</Label>

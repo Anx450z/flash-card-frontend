@@ -54,7 +54,7 @@ const Navbar = () => {
       <div className=" fixed top-0 left-0 w-full shadow-sm z-[1]">
         <div
           className="w-screen items-center justify-between
-          bg-white/[0.5] py-4 px-7 md:flex md:px-10 backdrop-blur-lg">
+          bg-white/[0.5] py-4 px-7 md:flex md:px-10 backdrop-blur-lg backdrop-saturate-200">
           <ul
             className="absolute left-0 z-[-1] w-full pb-7
               pl-9 transition-all duration-500 ease-in-out md:static md:z-auto md:flex
