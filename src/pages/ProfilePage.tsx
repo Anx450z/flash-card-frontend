@@ -8,6 +8,8 @@ import FlashCard from '../components/FlashCard'
 import { myContext } from '../Context'
 import FlashTypes from '../types/FlashType'
 
+const backdrop = require('../assets/backdrop.jpg')
+
 const ProfilePage = () => {
   const context: any = useContext(myContext)
   const navigate = useNavigate()
@@ -85,12 +87,14 @@ const ProfilePage = () => {
 
   return (
     <>
-      <div className="fixed right-5 bottom-5 z-[2] ">
+      <img className="fixed z-[-1] mt-10 h-screen w-screen border-2" src={backdrop} alt="test" />
+
+      <div className="fixed right-8 bottom-5 z-[2] ">
         <Button text="Add Flash" onClick={handleNewFlash} />
       </div>
-      <div className="flex justify-center bg-slate-100 ">
+      <div className="flex justify-center ">
         <ul
-          className={`mt-[90px] mx-4 my-4 mb-[80px] grid min-w-[25rem] max-w-[70rem] grid-cols-2 gap-4
+          className={`mx-4 my-4 mt-[90px] mb-[80px] grid min-w-[25rem] max-w-[70rem] grid-cols-2 gap-4
           rounded-xl border bg-white p-4 md:grid-cols-3`}>
           {flashes.map(flash => (
             <li

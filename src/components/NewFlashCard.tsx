@@ -62,7 +62,7 @@ const NewFlashCard = (props: any) => {
   return (
     <Card color={color.backgroundColor || props.flashColor}>
       <form className="space-y-6" onSubmit={props.onHandleSubmit} id="flash-form">
-        <h3 className="text-xl font-medium text-black/[0.7]">{props.title || 'Create a new flash'}</h3>
+        <h3 className="text-xl font-bold text-black/[0.7]">{props.title || 'Create a new flash'}</h3>
         <div>
           <div className="flex items-start justify-between">
             <Label>Your Question</Label>

@@ -68,7 +68,7 @@ const Navbar = () => {
                 />
                 <ClearButton
                   onClick={handleLogout}
-                  tailwind="absolute mx-3 right-5 bg-black/[0.1] px-4 py-2">
+                  tailwind="absolute mx-3 right-10 bg-black/[0.1] px-4 py-2">
                   {' '}
                   Logout
                 </ClearButton>
@@ -76,7 +76,7 @@ const Navbar = () => {
             ) : (
               <ClearButton
                 onClick={handleLogin}
-                tailwind="absolute mx-3 right-5 bg-black/[0.1] px-4 py-2">
+                tailwind="absolute mx-3 right-10 bg-black/[0.1] px-4 py-2">
                 {' '}
                 Login
               </ClearButton>

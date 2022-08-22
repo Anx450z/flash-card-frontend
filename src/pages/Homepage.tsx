@@ -4,23 +4,22 @@ import { Card } from '../components/common/Card'
 import FlashCard from '../components/FlashCard'
 
 const backdrop = require('../assets/backdrop.jpg')
-console.log(backdrop)
-
 const Homepage = () => {
   const navigate = useNavigate()
   const handleLogin = () => navigate('/login')
   return (
     <>
+      <img className="z-[-1] fixed w-screen h-screen border-2 mt-10" src={backdrop} alt="test"/>
       <div
         className={`item-center flex h-screen justify-center overflow-hidden
-        py-5 transition-all duration-500 ease-in-out bg-gradient-to-t from-yellow-100 to-red-400`}>
+        py-5 transition-all duration-500 ease-in-out`}>
         <div>
-          <Card color="relative text-center top-[10%] bg-white">
-            <h3 className=" text-2xl font-medium text-black/[0.7]"> Welcome to Flash Cards</h3>
+          <Card color="mt-[25%] text-center top-[10%] bg-white z-[1]">
+            <h3 className=" text-2xl font-bold text-black/[0.7]"> Welcome to Flash Cards !</h3>
             <div className="my-[3rem] py-3">
               <p>
                 Flash Card App allows to remember important thing. Just put your question and
-                answers you want to memories, and begin remembering.
+                answers you want to memories...
               </p>
               <div className="my-4 p-4">
                 <FlashCard
