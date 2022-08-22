@@ -94,7 +94,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div className="top-0 left-0 mt-[65px] w-full"></div>
+      {/* <div className="top-0 left-0 mt-[65px] w-full"></div> */}
     </>
   )
 }

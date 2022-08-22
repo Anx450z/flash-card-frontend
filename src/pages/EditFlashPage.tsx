@@ -97,8 +97,8 @@ const EditFlashPage = () => {
     <>
       <div
         className="item-center mx-auto flex h-screen justify-center
-        bg-slate-100 transition-all duration-500 ease-in-out">
-        <div className="mt-[10%]">
+        bg-slate-100 transition-all duration-500 ease-in-out bg-gradient-to-r from-violet-100 to-fuchsia-500">
+        <div className="mt-[5%]">
           <NewFlashCard
             onHandleSubmit={handleSubmit}
             title="Edit flash card"

@@ -12,7 +12,7 @@ const Homepage = () => {
   return (
     <>
       <div
-        className={`item-center flex h-[94vh] justify-center overflow-hidden
+        className={`item-center flex h-screen justify-center overflow-hidden
         py-5 transition-all duration-500 ease-in-out bg-gradient-to-t from-yellow-100 to-red-400`}>
         <div>
           <Card color="relative text-center top-[10%] bg-white">

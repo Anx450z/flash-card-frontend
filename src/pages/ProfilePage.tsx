@@ -85,12 +85,12 @@ const ProfilePage = () => {
 
   return (
     <>
-      <div className="fixed right-5 bottom-5 z-[2]">
+      <div className="fixed right-5 bottom-5 z-[2] ">
         <Button text="Add Flash" onClick={handleNewFlash} />
       </div>
-      <div className="flex justify-center bg-slate-100">
+      <div className="flex justify-center bg-slate-100 ">
         <ul
-          className={`mx-4 my-4 mb-[80px] grid min-w-[25rem] max-w-[70rem] grid-cols-2 gap-4
+          className={`mt-[90px] mx-4 my-4 mb-[80px] grid min-w-[25rem] max-w-[70rem] grid-cols-2 gap-4
           rounded-xl border bg-white p-4 md:grid-cols-3`}>
           {flashes.map(flash => (
             <li

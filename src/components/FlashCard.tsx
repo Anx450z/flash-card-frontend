@@ -38,7 +38,7 @@ const FlashCard = (props: FlashTypes) => {
     setStyle(`${color}  border hover:shadow-2xl ${
       flip ? 'border-4 border-green-600' : 'border-4 border-transparent shadow-sm'
     }
-      rounded-xl overflow-hidden transition-all duration-500 ease-in-out`)
+      rounded-xl transition-all duration-500 ease-in-out h-full flex flex-col justify-between `)
 
     axios
       .patch(
@@ -68,7 +68,8 @@ const FlashCard = (props: FlashTypes) => {
           </ClearButton> */}
         </div>
       </header>
-      <div className="p-4 text-center" onClick={handleFlip}>
+
+      <div className="p-4 text-center " onClick={handleFlip}>
         {flip ? (
           <>
             <Label color="text-black/[0.5]">Answer</Label>
@@ -85,7 +86,7 @@ const FlashCard = (props: FlashTypes) => {
           </>
         )}
       </div>
-      <footer className="flex items-start justify-between bg-black/[0.05] px-4 py-2 opacity-0 hover:opacity-100">
+      <footer className="mb-0 flex items-start justify-between bg-black/[0.05] px-4 py-2 opacity-0 hover:opacity-100">
         <Label color="text-black/[0.5] " tailwind="mt-2 capitalize">
           {props.tag}
         </Label>
