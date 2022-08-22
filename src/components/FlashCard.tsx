@@ -52,7 +52,7 @@ const FlashCard = (props: FlashTypes) => {
         { withCredentials: true }
       )
       .catch(err => console.error(err))
-  }, [isFav])
+  }, [isFav, props.id])
 
   return (
     <div className={style}>

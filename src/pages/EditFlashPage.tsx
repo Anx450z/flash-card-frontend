@@ -91,9 +91,9 @@ const EditFlashPage = () => {
       setColor('bg-[#ffffff]')
     }
     setFormData(state)
-
-    fillForm()
   }, [state])
+
+  useEffect(() => fillForm())
 
   return (
     <>

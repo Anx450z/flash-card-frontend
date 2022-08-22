@@ -43,19 +43,19 @@ const ProfilePage = () => {
       .catch(err => console.error(err))
 
     // console.log('flashes', flashes)
-
     // return flashContext
   }
   const [show, setShow] = useState(false)
   const [id, setId] = useState(0)
 
   useEffect(() => {
-    getFlashes()
     const handleClick = () => setShow(false)
     window.addEventListener('click', handleClick)
 
     return () => window.removeEventListener('click', handleClick)
   }, [show])
+
+  useEffect(() => getFlashes(),[])
 
   // const ref = useRef(null)
   const handleContextMenu = (event: any) => {
