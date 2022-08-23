@@ -4,11 +4,11 @@ const PrivacyPolicyPage = () => {
     <>
       <img className="fixed z-[-1] mt-10 h-screen w-screen border-2" src={backdrop} alt="test" />
       <div
-        className={`item-center flex h-screen justify-center overflow-hidden
+        className={`item-center flex h-screen justify-center
         py-5 transition-all duration-500 ease-in-out`}>
         <div>
           <h3 className=" text-2xl font-bold text-black/[0.7]"> Privacy policy !</h3>
-          <div className="my-[3rem] py-3">
+          <div className="my-[3rem] py-3 px-4 mx-4 bg-white">
             <h2>
               <b>PRIVACY POLICY</b>
             </h2>
