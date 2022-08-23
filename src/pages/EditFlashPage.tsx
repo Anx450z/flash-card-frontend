@@ -38,7 +38,7 @@ const EditFlashPage = () => {
       try {
         setIsLoading(true)
         axios
-          .put(`http://localhost:4000/api/flash/edit`, actualData, {
+          .put(`https://ankur-flash-card-backend.herokuapp.com/api/flash/edit`, actualData, {
             withCredentials: true,
           })
           .then(res => {

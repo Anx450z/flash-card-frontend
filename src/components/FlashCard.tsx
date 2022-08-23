@@ -22,7 +22,7 @@ const FlashCard = (props: FlashTypes) => {
     setIsFav(!isFav)
     axios
       .patch(
-        'http://localhost:4000/api/flash/favorite',
+        'https://ankur-flash-card-backend.herokuapp.com/api/flash/favorite',
         {
           flashId: props.id,
           favorite: !isFav,

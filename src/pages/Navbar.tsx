@@ -37,7 +37,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     axios
-      .get('http://localhost:4000/auth/logout', { withCredentials: true })
+      .get('https://ankur-flash-card-backend.herokuapp.com/auth/logout', { withCredentials: true })
       .then((res: AxiosResponse) => {
         if (res.data) {
           if (res.data === 'success') {
