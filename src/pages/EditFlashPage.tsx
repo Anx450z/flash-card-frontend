@@ -5,7 +5,6 @@ import NewFlashCard from '../components/NewFlashCard'
 import { myContext } from '../Context'
 
 const backdrop = require('../assets/backdrop.jpg')
-
 const EditFlashPage = () => {
   const { state }: any = useLocation()
   // console.log('selectedFlash', state)
