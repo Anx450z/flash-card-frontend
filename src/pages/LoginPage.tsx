@@ -5,7 +5,7 @@ const backdrop = require('../assets/backdrop.jpg')
 
 const LoginPage = (props: any) => {
   const googleLogin = () => {
-    window.open('http://localhost:4000/auth/google', '_self')
+    window.open('https://ankur-flash-card-backend.herokuapp.com/auth/google', '_self')
   }
 
   return (
