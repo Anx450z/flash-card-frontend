@@ -50,7 +50,7 @@ const FlashCard = (props: FlashTypes) => {
         ? 'border-4 border-green-600'
         : 'border-4 border-transparent shadow-sm hover:border-black/[0.2]'
     } rounded-xl transition-all duration-500 ease-in-out h-full flex flex-col
-      justify-between hover:saturate-200`)
+      justify-between hover:saturate-200 w-[350px]`)
   }, [props.flashColor, flip])
 
   return (

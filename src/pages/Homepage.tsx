@@ -34,7 +34,7 @@ const Homepage = () => {
                   favorite={true}
                 />
               </div>
-              <p>Try above tutorial and see!</p>
+              <p>Try above tutorial and see!, you can create multiple cards like this.</p>
             </div>
             <Button text="Join Now" type="expanded" onClick={handleLogin} />
           </Card>
