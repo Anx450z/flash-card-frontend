@@ -18,8 +18,8 @@ const Navbar = () => {
       url: '/',
     },
     {
-      title: 'Contact',
-      url: '/',
+      title: 'Privacy',
+      url: '/privacy',
     },
   ]
   if (context) {

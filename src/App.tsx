@@ -8,6 +8,7 @@ import { myContext } from './Context'
 import ProfilePage from './pages/ProfilePage'
 import NewFlashPage from './pages/NewFlashPage'
 import EditFlashPage from './pages/EditFlashPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicy'
 
 function App() {
   const userObject = useContext(myContext)
@@ -22,6 +23,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/newflash" element={<NewFlashPage />} />
           <Route path="/edit" element={<EditFlashPage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="*" element={<h1>This page does not exist</h1>} />
         </Routes>
       </BrowserRouter>
