@@ -64,7 +64,7 @@ const FlashCard = (props: FlashTypes) => {
           {/* <ClearButton
             size="text-xl2"
             text="font-[900]"
-            tailwind=" px-2 py-0 text-black/[0.4] hover:text-black">
+            tailwind=" px-2 py-0 text-black/[0.4] hover:text-black hover"> 
             . . .
           </ClearButton> */}
         </div>
