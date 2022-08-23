@@ -35,18 +35,18 @@ const ProfilePage = () => {
 
   const [showFlashes, setShowFlashes] = useState<FlashTypes[]>()
 
-  const getFlashes = () => {
-    axios
-      .get(`http://localhost:4000/api/user/${context.id}/flashes`, {
-        timeout: 5000,
-      })
-      .then(res => {
-        // console.log(res.data)
-        setFlashes(res.data)
-        if (selectedItem === 'all') setShowFlashes(res.data)
-      })
-      .catch(err => console.error(err))
-  }
+  // const getFlashes = () => {
+  //   axios
+  //     .get(`http://localhost:4000/api/user/${context.id}/flashes`, {
+  //       timeout: 5000,
+  //     })
+  //     .then(res => {
+  //       // console.log(res.data)
+  //       setFlashes(res.data)
+  //       if (selectedItem === 'all') setShowFlashes(res.data)
+  //     })
+  //     .catch(err => console.error(err))
+  // }
   const [show, setShow] = useState(false)
   const [id, setId] = useState(0)
 
@@ -57,7 +57,23 @@ const ProfilePage = () => {
     return () => window.removeEventListener('click', handleClick)
   }, [show])
 
-  useEffect(() => getFlashes(), [])
+  const [selectedItem, setSelectedItem] = useState('all')
+  useEffect(() => {
+    if (selectedItem === "all"){
+
+      axios
+        .get(`http://localhost:4000/api/user/${context.id}/flashes`, {
+          timeout: 5000,
+        })
+        .then(res => {
+          // console.log(res.data)
+          setFlashes(res.data)
+          setShowFlashes(res.data)
+        })
+        .catch(err => console.error(err))
+    }
+    
+  },[context.id,selectedItem])
 
   // const ref = useRef(null)
   const handleContextMenu = (event: any) => {
@@ -87,7 +103,6 @@ const ProfilePage = () => {
     navigate(`/edit`, { state: selectedFlash })
   }
 
-  const [selectedItem, setSelectedItem] = useState('all')
 
   const handleFilter = () => {
     console.log('filtering', selectedItem)

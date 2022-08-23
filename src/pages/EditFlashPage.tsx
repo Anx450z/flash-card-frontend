@@ -114,6 +114,7 @@ const EditFlashPage = () => {
             buttonText="Update flash card"
             formData={formData}
             flashColor={color}
+            isLoading={isLoading}
           />
         </div>
       </div>

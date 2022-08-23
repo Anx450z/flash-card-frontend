@@ -21,7 +21,7 @@ const Homepage = () => {
                 Flash Card App allows to remember important thing. Just put your question and
                 answers you want to memories...
               </p>
-              <div className="my-4 p-4">
+              <div className=" flex my-4 p-4 items-start justify-center">
                 <FlashCard
                   question="Click here to reveal answer"
                   answer="Great!, you now how to use app!!"
