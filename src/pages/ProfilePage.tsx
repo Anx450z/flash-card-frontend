@@ -62,7 +62,7 @@ const ProfilePage = () => {
     if (selectedItem === "all"){
 
       axios
-        .get(`https://ankur-flash-card-backend.herokuapp.com/api/user/${context.id}/flashes`, {
+        .get(`${process.env.REACT_APP_BASE_URL}/api/user/${context.id}/flashes`, {
           timeout: 5000,
         })
         .then(res => {
@@ -87,7 +87,7 @@ const ProfilePage = () => {
 
   const deleteFlash = () => {
     axios
-      .delete(`https://ankur-flash-card-backend.herokuapp.com/api/flash/${id}/delete`)
+      .delete(`${process.env.REACT_APP_BASE_URL}/api/flash/${id}/delete`)
       .then(res => console.log(res.data))
       .catch(err => console.error(err))
   }

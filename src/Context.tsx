@@ -8,7 +8,7 @@ function Context(props: any) {
 
   useEffect(() => {
     axios
-      .get('https://ankur-flash-card-backend.herokuapp.com/getuser', {
+      .get(`${process.env.REACT_APP_BASE_URL}/getuser`, {
         withCredentials: true
       })
       .then((res: AxiosResponse) => {

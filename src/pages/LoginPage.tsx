@@ -4,8 +4,9 @@ import { Card } from '../components/common/Card'
 const backdrop = require('../assets/backdrop.jpg')
 
 const LoginPage = (props: any) => {
+  console.log("Environment : ",process.env.REACT_APP_BASE_URL)
   const googleLogin = () => {
-    window.open('https://ankur-flash-card-backend.herokuapp.com/auth/google', '_self')
+    window.open(`${process.env.REACT_APP_BASE_URL}/auth/google`, '_self')
   }
 
   return (

@@ -35,7 +35,7 @@ const NewFlashPage = () => {
       setIsLoading(true)
       try {
         axios
-          .post(`https://ankur-flash-card-backend.herokuapp.com/api/user/${context.id}/newflash`, actualData, {
+          .post(`${process.env.REACT_APP_BASE_URL}/api/user/${context.id}/newflash`, actualData, {
             withCredentials: true,
           })
           .then(res => {
