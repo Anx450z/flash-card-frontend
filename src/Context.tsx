@@ -8,7 +8,7 @@ function Context(props: any) {
 
   useEffect(() => {
     axios
-      .get(`${process.env.REACT_APP_BASE_URL}/getuser`, {
+      .get(`${process.env.REACT_APP_BASE_URL}/api/getuser`, {
         withCredentials: true
       })
       .then((res: AxiosResponse) => {
