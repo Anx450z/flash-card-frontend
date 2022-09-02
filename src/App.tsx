@@ -12,7 +12,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicy'
 
 function App() {
   const userObject = useContext(myContext)
-  console.log('app.tsx == ', userObject)
+  // console.log('app.tsx == ', userObject)
   return (
     <div className="font-[poppins] transition-all duration-500 ease-in-out">
       <BrowserRouter>

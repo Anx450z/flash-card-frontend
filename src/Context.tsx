@@ -7,12 +7,13 @@ function Context(props: any) {
   const [userObject, setUserObject] = useState<any>()
 
   useEffect(() => {
+    // console.log("axios:", `${process.env.REACT_APP_BASE_URL}/api/getuser`)
     axios
       .get(`${process.env.REACT_APP_BASE_URL}/api/getuser`, {
         withCredentials: true
       })
       .then((res: AxiosResponse) => {
-        console.log('data received : ', res.data)
+        // console.log('data received : ', res.data)
         if (res.data) {
           setUserObject(res.data)
         }
